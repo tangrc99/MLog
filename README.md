@@ -2,7 +2,7 @@
 
 ## 项目介绍
 
-MLog 是一个玩具项目，仿照了 MongoDB 中的事务组提交日志机制写成。该日志提交机制可以参考 https://www.mongodb.com/blog/post/breaking-wired-tiger-logjam-write-ahead-log。
+MLog 是一个玩具项目，仿照了 MongoDB 中的事务组提交日志机制写成。该日志提交机制可以参考 https://www.mongodb.com/blog/post/breaking-wired-tiger-logjam-write-ahead-log
 
 该日志系统主要思想可以概括为以下几点：
 
@@ -39,7 +39,6 @@ Wiredtiger 中的日志系统设计参考了论文 Scalability of write-ahead lo
 ### 无后台线程负责写入日志
 
 传统的后台线程写入的日志模式在无日志缓冲区时会陷入阻塞，而唤醒线程则需要花费 20us 左右的时间，而这一延迟按照论文中的方法是可以优化的，也就是 Wiredtiger 中采取的日志模式。当发生 少量写入操作到达———短时间空闲———少量写入操作到达，这种情况；传统的后台日志写入模式可能就会损耗较大的性能。
-
 
 
 
